@@ -6,9 +6,9 @@ global _start
 
 _start:
 
-        jmp short ender
+        jmp short call_shellcode
 
-        starter:
+        shellcode:
 
         xor eax, eax    ;clean up the registers
         xor ebx, ebx
@@ -26,6 +26,6 @@ _start:
         xor ebx,ebx
         int 0x80
 
-        ender:
-        call starter	;put the address of the string on the stack
-        db 'hello'
+        call_shellcode:
+        call shellcode	;put the address of the string on the stack
+        db 'milu'
